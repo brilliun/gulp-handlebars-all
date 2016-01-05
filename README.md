@@ -19,7 +19,7 @@ gulp.task('compileToJS', function() {
    gulp.src('runtimeTemplate/*.hbs')
   .pipe(hbsAll('js'))
   .pipe($.declare({
-    namespace: 'Lespas.templates',
+    namespace: 'app.templates',
     noRedeclare: true,
   }))
   .pipe($.concat('runtimeTemplate.js'))
