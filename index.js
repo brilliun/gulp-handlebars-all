@@ -11,7 +11,7 @@ var PLUGIN_NAME = 'gulp-handlebars-all';
 var OUTPUT_TYPE_JS = 'js';
 var OUTPUT_TYPE_HTML = 'html';
 
-module.exports = function(pOutputType, pOptions) {
+module.exports = function(pOutputType, pOptions, pExecOptions) {
   var tOptions = pOptions || {};
   var tOutput;
   var tContext = tOptions.context || {};
@@ -58,7 +58,7 @@ module.exports = function(pOutputType, pOptions) {
     } else if (pOutputType === OUTPUT_TYPE_HTML) {      
       try {
         var tTemplate = handlebars.compile(tFileContents, tOptions);
-        tOutput = tTemplate(tContext);
+        tOutput = tTemplate(tContext, pExecOptions);
       } catch(pError) {
         return pCallback(new PluginError(PLUGIN_NAME, pError, {
           fileName: pFile.path
